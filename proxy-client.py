@@ -9,10 +9,8 @@ client_socket.send(request_header.encode('utf-8'))
 
 response = ''
 while True:
-    recv = client_socket.recv(1024).encode('utf-8')
+    recv = client_socket.recv(1024).decode('utf-8')
+    print (response)
     if not recv:
         break
-    response += recv
-
-print (response)
 client_socket.close()
