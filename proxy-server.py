@@ -46,18 +46,18 @@ def threaded_client(connection):
            print('sent %s bytes back to %s: ' % (len(response), address))
         elif request and password == 'fown' and method == 2:
            response = bytes_request * 'D' + 'D\r\n'
-           connection.send(b'HTTP/1.1 200 Connection established\r\n\r\n')
+           connection.send(b'HTTP/1.1 200 0K\r\n\r\n')
            connection.sendall(response.encode('utf-8'))
            print('sent %s bytes back to %s: ' % (len(response), address))
         elif request and password == 'fown' and method == 3:
            response = bytes_request * 'D' + 'D'
-           connection.send(b'HTTP/1.1 200 0K\r\n\r\n')
+           connection.send(b'HTTP/1.1 200 Connection established\r\n\r\n')
            connection.sendall(response.encode('utf-8'))
            print('sent %s bytes back to %s: ' % (len(response), address))
         elif request and password == 'fown' and method == 4:
            response = (os.urandom(998) + b'\r\n')*500
            print('sent %s bytes back to %s: ' % (len(response), address))
-           connection.sendall(response)
+           connection.sendall(response.encode('utf-8'))
         elif request and password == 'fown' and method == 5:
            response = bytes_request * 'D' + '\r\n'
            if len(response) > 1000:
